@@ -1,0 +1,107 @@
+import os
+def clear():
+  os.system('cls' if os.name == 'nt' else 'clear')
+
+one=0
+two=0
+three=0
+four=0
+five=0
+aimType=one
+aimAmount=0
+
+def convertInt(one, two, three, four, five, aimAmount):
+  one = int(one)
+  two = int(two)
+  three = int(three)
+  four = int(four)
+  five = int(five)
+  aimAmount = int(aimAmount)
+  return one, two, three, four, five, aimAmount
+
+def calculateNeed(one, two, three, four, five, aimType, aimAmount):
+  one, two, three, four, five, aimAmount = convertInt(one, two, three, four, five, aimAmount)
+  need=0
+  if aimType == "one":
+    need = aimAmount - one
+  if aimType == "two":
+    need = one//3
+    need = aimAmount - two - need
+  if aimType ==  "three":
+    need = one//3
+    need = ((need+two)//3)
+    need = ((need+three)//3)
+    need = aimAmount - three - need
+  if aimType ==  "four":
+    need = one//3
+    need = ((need+two)//3)
+    need = ((need+three)//3)
+    need = aimAmount - four - need
+  if aimType ==  "five":
+    need = one//3
+    need = ((need+two)//3)
+    need = ((need+three)//3)
+    need = ((need+four)//3)
+    need = aimAmount - five - need
+  if need <=0:
+    print("you've achieved your goal!")
+  else:
+    print("you want",aimAmount,aimType,"stars")
+    print("you still need:",need,aimType,"stars")
+  
+def main(one, two, three, four, five, aimType, aimAmount):
+  print(" genshin material calculator")
+  print("/////////////////////////////")
+  print("5* =",five)
+  print("4* =",four)
+  print("3* =",three)
+  print("2* =",two)
+  print("1* =",one)
+  print("/////////////////////////////")
+  calculateNeed(one, two, three, four, five, aimType, aimAmount)
+  print("/////////////////////////////")
+  print("press 5 to add 5*")
+  print("press 4 to add 4*")
+  print("press 3 to add 3*")
+  print("press 2 to add 2*")
+  print("press 1 to add 1*")
+  choice = input()
+  convertInt(one, two, three, four, five, aimAmount)
+  if choice == "1":
+    clear()
+    change=int(one)+1
+    main(change, two, three, four, five, aimType, aimAmount)
+  if choice == "2":
+    clear()
+    change=int(two)+1
+    main(one, change, three, four, five, aimType, aimAmount)
+  elif choice == "3":
+    clear()
+    change=int(three)+1
+    main(one, two, change, four, five, aimType, aimAmount)
+  elif choice == "4":
+    clear()
+    change=int(four)+1
+    main(one, two, three, change, five, aimType, aimAmount)
+  elif choice == "5":
+    clear()
+    change=int(five)+1
+    main(one, two, three, four, change, aimType, aimAmount)
+  else:
+    clear()
+    main(one, two, three, four, aimType, aimAmount)
+
+def setup():
+  print(" genshin material calculator")
+  print("/////////////////////////////")
+  five=input("five stars already have = ")
+  four=input("four stars already have = ")
+  three=input("three stars already have = ")
+  two=input("two stars already have = ")
+  one=input("one stars already have = ")
+  aimType=input("type of star level wanted = ")
+  aimAmount=input("type of that amount = ")
+  clear()
+  main(one, two, three, four, five, aimType, aimAmount)
+  
+setup()
