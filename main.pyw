@@ -5,7 +5,7 @@ from pygame.locals import QUIT
 pygame.init()
 
 #window design
-width, height = 450, 750  #4:3 aspect ratio like a ds!
+width, height = 450, 750
 win = pygame.display.set_mode((width, height))
 pygame.display.set_caption("genshin ascension materials tracker")
 
