@@ -7,7 +7,7 @@ pygame.init()
 #window design
 width, height = 450, 750
 win = pygame.display.set_mode((width, height))
-pygame.display.set_caption("genshin ascension materials tracker")
+pygame.display.set_caption("genshin ascension calculator")
 
 def getFileValue(file, line):
   f = open(file, "r")
